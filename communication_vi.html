@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Techniques de Communication d’Entreprise — Partie VI</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+    :root {
+      --bg-1: #f5f2ea;
+      --bg-2: #e7efe8;
+      --ink: #1b1b1b;
+      --muted: #4a4a4a;
+      --accent: #0a5c6d;
+      --accent-2: #c26a35;
+      --card: #ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Merriweather", serif;
+      color: var(--ink);
+      background: radial-gradient(1200px 800px at 10% 10%, #fffaf0 0%, var(--bg-1) 40%, var(--bg-2) 100%);
+      line-height: 1.7;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 20px 96px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      padding: 28px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, #ffffff 0%, #f6faf8 100%);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(10,92,109,0.25), transparent 70%);
+    }
+
+    .hero h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.1;
+      margin: 0 0 12px 0;
+    }
+
+    .hero p {
+      margin: 0 0 18px 0;
+      color: var(--muted);
+    }
+
+    .tagline {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: #f1f7f7;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--accent);
+    }
+
+    .hero-side {
+      padding: 18px;
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid #eef2f2;
+    }
+
+    .hero-side h3 {
+      font-family: "Space Grotesk", sans-serif;
+      margin: 0 0 8px 0;
+      font-size: 18px;
+    }
+
+    .grid {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid #edf1f1;
+    }
+
+    .card h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      margin: 0 0 10px 0;
+      color: var(--accent);
+    }
+
+    .span-12 { grid-column: span 12; }
+    .span-8 { grid-column: span 8; }
+    .span-6 { grid-column: span 6; }
+    .span-4 { grid-column: span 4; }
+
+    .pill {
+      display: inline-block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: #fff6ee;
+      color: var(--accent-2);
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    .highlight {
+      border-left: 4px solid var(--accent);
+      padding-left: 14px;
+      color: var(--muted);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .step {
+      background: #f7faf9;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      border: 1px solid #e7eeee;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .criteria {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .criterion {
+      background: #f8f6f1;
+      border: 1px solid #efe7db;
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 14px;
+    }
+
+    .footer {
+      margin-top: 36px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .deck-controls {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .deck-controls button {
+      font-family: "Space Grotesk", sans-serif;
+      border: 1px solid #e4e8e8;
+      background: #ffffff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    .deck-mode {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      z-index: 10;
+    }
+
+    .deck-mode button {
+      font-family: "Space Grotesk", sans-serif;
+      border: 1px solid #e4e8e8;
+      background: #ffffff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    body.deck {
+      scroll-snap-type: y mandatory;
+      overflow-y: auto;
+    }
+
+    body.deck .page {
+      max-width: 100%;
+      padding: 40px 16px 120px;
+    }
+
+    .slide {
+      scroll-snap-align: start;
+      scroll-margin-top: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      .span-8, .span-6, .span-4 { grid-column: span 12; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .criteria { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .card, .hero {
+        animation: fadeUp 0.7s ease both;
+      }
+      .card:nth-child(2) { animation-delay: 0.05s; }
+      .card:nth-child(3) { animation-delay: 0.1s; }
+      .card:nth-child(4) { animation-delay: 0.15s; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero slide" data-title="Introduction">
+      <div>
+        <span class="tagline">Partie VI — Techniques</span>
+        <h1>Techniques de communication d’entreprise</h1>
+        <p>
+          Cette section explique comment une entreprise déploie une stratégie de communication
+          à travers un mix de techniques complémentaires : publicité médias, communication hors médias
+          et multimédia. L’enjeu principal est d’orchestrer ces leviers en fonction des objectifs
+          et des cibles.
+        </p>
+      </div>
+      <div class="hero-side">
+        <h3>Idée directrice</h3>
+        <p class="highlight">
+          La communication efficace ne dépend pas d’un seul canal, mais d’un assemblage cohérent
+          d’actions adaptées aux publics visés.
+        </p>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card span-12 slide" data-title="Le mix">
+        <span class="pill">Le mix</span>
+        <h2>Le mix de communication</h2>
+        <p>
+          La communication d’entreprise repose sur un mix structuré en trois familles :
+          la publicité médias, la communication hors médias et le multimédia. Ce mix n’est pas figé :
+          il se construit selon les objectifs de la campagne et la nature des cibles. Dans le cadre
+          institutionnel, la multiplicité des publics conduit souvent à une mosaïque d’actions cohérentes
+          plutôt qu’à une action unique.
+        </p>
+      </article>
+
+      <article class="card span-6 slide" data-title="Publicité médias">
+        <span class="pill">Médias</span>
+        <h2>Publicité médias</h2>
+        <p>
+          La publicité médias vise la communication de masse via l’achat d’espace : télévision, presse,
+          radio, affichage, cinéma et internet. Elle reste très utilisée car elle est perçue comme
+          la technique la plus “acceptée”, même si elle peut entraîner une déperdition de contacts.
+        </p>
+      </article>
+
+      <article class="card span-6 slide" data-title="Hors médias">
+        <span class="pill">Hors médias</span>
+        <h2>Communication hors médias</h2>
+        <p>
+          Ces techniques ne passent pas par l’achat d’espace. Elles regroupent l’identité visuelle,
+          la publicité par l’événement, la publicité directe, les relations publiques, le lobbying
+          et le bouche‑à‑oreille. L’identité visuelle, par exemple, se matérialise dans le logo
+          et l’univers graphique de l’entreprise.
+        </p>
+      </article>
+
+      <article class="card span-12 slide" data-title="Campagne médias">
+        <span class="pill">Processus</span>
+        <h2>La campagne publicitaire médias</h2>
+        <p>
+          La campagne médias suit une démarche structurée : on définit d’abord les objectifs et la cible,
+          puis on crée le message, on planifie les médias, on pré‑teste, on déploie, on post‑teste et enfin
+          on contrôle l’efficacité. La création publicitaire est présentée comme un facteur de performance
+          et d’économie, que le marketing doit guider sans l’étouffer.
+        </p>
+        <div class="steps">
+          <div class="step">Objectifs</div>
+          <div class="step">Cible</div>
+          <div class="step">Création</div>
+          <div class="step">Média‑planning</div>
+          <div class="step">Tests & contrôle</div>
+        </div>
+      </article>
+
+      <article class="card span-8 slide" data-title="Événementiel">
+        <span class="pill">Événementiel</span>
+        <h2>Publicité par l’événement</h2>
+        <p>
+          Cette technique s’appuie sur un événement sportif, culturel, social ou scientifique.
+          L’impact dépend du succès de l’événement et de sa cohérence avec l’image de l’entreprise.
+          Trois formes dominent : le sponsoring (logique commerciale), le mécénat (logique d’image)
+          et le parrainage (sponsoring d’émissions TV ou radio).
+        </p>
+      </article>
+
+      <article class="card span-4 slide" data-title="Relations publiques">
+        <span class="pill">Relais</span>
+        <h2>Relations publiques</h2>
+        <p>
+          Les RP utilisent des relais d’information — journalistes, prescripteurs, leaders d’opinion —
+          afin d’installer un climat de compréhension et de confiance favorable à l’image de l’entreprise.
+        </p>
+      </article>
+
+      <article class="card span-6 slide" data-title="Lobbying">
+        <span class="pill">Influence</span>
+        <h2>Lobbying</h2>
+        <p>
+          Le lobbying vise les décideurs politiques et institutionnels pour faire évoluer leurs décisions.
+          Il suit une démarche classique : objectifs, cibles, techniques et évaluation. En France, il reste
+          perçu de manière négative, car assimilé à des groupes de pression.
+        </p>
+      </article>
+
+      <article class="card span-6 slide" data-title="Multimédia">
+        <span class="pill">Digital</span>
+        <h2>Communication multimédia</h2>
+        <p>
+          Internet complète les techniques traditionnelles : communication de masse et individualisée,
+          interactive et mondiale, avec une audience mesurable. La plupart des entreprises intègrent
+          désormais ce levier à leur stratégie.
+        </p>
+      </article>
+
+      <article class="card span-12 slide" data-title="Choix des supports">
+        <span class="pill">Choix des supports</span>
+        <h2>Critères quantitatifs de sélection</h2>
+        <p>
+          La sélection des supports se base sur des critères mesurables, afin d’optimiser l’efficacité
+          de la diffusion.
+        </p>
+        <div class="criteria">
+          <div class="criterion"><strong>Puissance</strong> : taille de la cible exposée au support.</div>
+          <div class="criterion"><strong>Pénétration</strong> : pourcentage de la cible touchée.</div>
+          <div class="criterion"><strong>Coût au mille</strong> : coût pour 1000 contacts utiles.</div>
+        </div>
+      </article>
+    </section>
+
+    <div class="footer slide" data-title="Conclusion">
+      Synthèse présentable en lecture continue — Partie VI du cours de communication d’entreprise.
+    </div>
+  </div>
+
+  <div class="deck-mode">
+    <button id="toggleDeck" type="button">Mode présentation</button>
+  </div>
+  <div class="deck-controls" aria-hidden="true">
+    <button id="prevSlide" type="button">Précédent</button>
+    <button id="nextSlide" type="button">Suivant</button>
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const deckToggle = document.getElementById('toggleDeck');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    const controls = document.querySelector('.deck-controls');
+    let index = 0;
+
+    function goTo(i) {
+      index = Math.max(0, Math.min(slides.length - 1, i));
+      slides[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function setDeckMode(on) {
+      document.body.classList.toggle('deck', on);
+      controls.style.display = on ? 'flex' : 'none';
+      deckToggle.textContent = on ? 'Quitter présentation' : 'Mode présentation';
+      if (on) goTo(index);
+    }
+
+    deckToggle.addEventListener('click', () => {
+      const on = !document.body.classList.contains('deck');
+      setDeckMode(on);
+    });
+
+    prevBtn.addEventListener('click', () => goTo(index - 1));
+    nextBtn.addEventListener('click', () => goTo(index + 1));
+
+    document.addEventListener('keydown', (e) => {
+      if (!document.body.classList.contains('deck')) return;
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') goTo(index + 1);
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') goTo(index - 1);
+    });
+
+    controls.style.display = 'none';
+  </script>
+</body>
+</html>
