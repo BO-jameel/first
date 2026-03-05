@@ -1,7 +1,8 @@
 {
   "name": "Compteur USB",
   "short_name": "Compteur",
-  "start_url": "/",
+  "start_url": "/first/",
+  "scope": "/first/",
   "display": "standalone",
   "background_color": "#dbeafe",
   "theme_color": "#111827",
